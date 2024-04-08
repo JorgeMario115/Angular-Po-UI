@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import {
+  PoButtonModule,
   PoMenuItem,
   PoMenuModule,
   PoPageModule,
@@ -19,6 +20,7 @@ import {
     PoToolbarModule,
     PoMenuModule,
     PoPageModule,
+    PoButtonModule,
     HttpClientModule,
   ],
   templateUrl: './app.component.html',
@@ -26,7 +28,34 @@ import {
 })
 export class AppComponent {
   readonly menus: Array<PoMenuItem> = [
-    { label: 'Home', action: this.onClick.bind(this) },
+    { label: 'Home',
+      action: this.onClick.bind(this),
+      shortLabel:'Home',
+      icon:'po-icon po-icon-home'
+    },
+    { label: 'Produtos',
+      shortLabel:'Produtos',
+      icon:'po-icon po-icon-pushcart',
+      subItems: [
+        {
+          label:'Estoque',
+        },
+        {
+          label:'Garantia'
+          
+        }
+      ]
+    },
+    { label: 'Vendas',
+      action: this.onClick.bind(this),
+      shortLabel:'Vendas',
+      icon:'po-icon po-icon-sale'
+    },
+    { label: 'Financeiro',
+      action: this.onClick.bind(this),
+      shortLabel:'Financeiro',
+      icon:'po-icon po-icon-money'
+     },
   ];
 
   private onClick() {
